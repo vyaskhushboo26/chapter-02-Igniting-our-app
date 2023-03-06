@@ -1,62 +1,112 @@
 ## Summary of today's class:
 
-1. Intro about the namaste react course 
+Igniting React App
+. In last class - Created Basic React App
 
-2. Environment needed : Editor -  vs code, Browser - google chrome
+. Today, production ready React App - From scratch without using create react-app
 
-3. Extensions for VS code :
-better comments
-bracket pair colorization toggler
-es7+ react/redux/react-native snippet
-gitlens
-prettier-code
-prettify JSON
-vs-code icons
+. to Ignite our app - Bundler eg : vite,parcel,webpack
 
-4. Created html boiler template in vs code using emmet and wrote html for printing some text.
+. In create react-app, they use webpack bundler
 
-5. Wrote a simple js program to print Namaste Everyone in h1 tag inside div container with id root and this is called the DOM maniupulation.
+. Bundler is package/module of javascript code
 
-  const heading = document.createElement("h1");
-  heading.innerHTML = "Namaste Everyone";
-  const root = document.getElementById("root);
-  root.appendChild(heading);
+. All the package that my project need is a dev depandency 
+  and parcel is such of one dependency
 
-6. How does Browser know about document, createElement, appendChild etc ?
-  -> used JS engine's browser API called document to create h1 element and appendChild to append it to root div.
-  Js engine gives all the functionality, browser also know about window he has a JS engine. 
+. to have a package in code -> we need Package Manager (eg : npm, yarn)
 
+npm init -> create package.json -> which is amezing configuration, which npm needs to run it self.
+npm init -y -> to skip configuration
 
-7. Sortest program of Js is a EMPTY file. 
+. why npm ? helper packages -> Because react app cant be whole full fleject production app, we need lots of super power or packages to minified, bundle it, optimizied, tree shaking, chunk in or lots of things and using NPM( package manager ) we can insall these packages in our project. 
 
-8. Inject REACT in your code is a sortest program of react.
+Parcel :
+
+npm install -D parcel  -> -D dev dependency
+      or
+npm install --save-dev parcel
+
+parcel comes as a dev dependencies because we need it at our dev enviroment and also
+their will be some packages that we need at our globle enviroment that we will installed
+it without '-D'
+
+1. created package-lock.json
+    -> and it'll exectly tell you that what version your project depend on. 
+    -> we need package-lock.json file in GIT throught this we can regenerate Node Module. 
+
+2. created Node modules
+   -> never put Node Module in GIT 
+   -> Node Module is a helper function / helper code
+
+step 2
   
-9. Wrote the same program using React 
+react cdn - is not a good way Good way -> in server thrugh node modules
 
-  -> Add script for react CDN link in body of index.hmtl 
-  -> create app.js and move our js script there
-  -> Now, write the same script in react
+npm install react -> in global dependencies not dev dependencies
 
-  A `react element` is nothing but an object with properties which is created by React library.
-  const heading = React.createElement("h1", {}, "Namaste Everyone");
+npm install react-dom -> in globle dependencies
 
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(heading);
+npx parcel index.html -> Execute using npm with index.html as entry point -> Creates local server
 
-  10. render() method takes an react element and modify our DOM.
+Parcel gives us this server
 
-  React will override whatever is inside your root and it will replace whatever you give inside render.
-  so until the root is rendered, if we want to display some error message, it can be written in html (Not Rendered).
+Error : React is defined because we removed cdn link. Instead of that, we have to use import since this time we are using node modules - npm 
 
-  what if we need to put more elements inside the root container - pass array of react elements to the container creation
+Error : Browser doesnot understand import -> we have to inform its modules, use type="module" in script tag
+Note : Module can import and export
 
-  const heading1 = React.createElement("h1", {id : "title"}, "Namaste Everyone");
-  const heading2 = React.createElement("h2", {id : "sub_title"}, "Welcome");
+Warning : React DOM -> createRoot is not found -> use react-dom/client
 
-  const container = React.createElement("div", {}, [heading1, heading2]);
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(container);
+Live Server -> Auto refresh -> Hot Module Replacement (HMR) -> Parcel does it for us using File Watcher Algorithm (written in c++) Parcel.cache -> uses this space for doing all the HMR, minify and other stuffs dist folder -> minified code in dist npx parcel build index.html -> production ready build is created by parcel inside dist folder and has only 3 files : css, html and js file containing all the code including react code
 
-7. Created a style.css file and linked to index.html 
+Parcel Functionalities :
 
-8. Learn about arrow function for tomorrow's class
+1. HMR - Hot Module Replacement
+2. File Watcher algorithm -> written c++
+3. Bundling
+4. minification (removing indentation)
+5. Cleaning our code
+6. Dist -> npm parcel build index.html
+7. Manager Dev and Producion Build
+8. Super fast Build algorithm
+9. Image optimization
+10. caching while development
+11. Compression
+12. works with older version of browsers
+13. Https on dev as well 
+npx parcel index.html --https 
+14. Consistent Hashing Algorithm 
+15. zero config bundler
+16. Manager port number 
+17. Tree shaking - Removing unwanted code
+18. Created a server
+
+Note ---> we should put .parcel-cache in gitignore -> anything which can be autogenerated in server can be put in gitignore
+
+Initial dev build -> longer time (500ms) -> for next build -> takes less time 5ms using caching
+
+When using parcel, we give entry point in command so we can remove main: app.js from package.json
+
+Transitive dependencies -> dependencies of dependencies Eg: Our App is dependent on Parcel which is again dependent on other dependencies (dependency Tree)
+
+browsersList -> cross browser compatibility for older versions of browsers
+
+Summary Steps :
+
+npm init
+npm install -D parcel
+npm install react
+npm install react-dom
+npx parcel index.html or npx parcel build index.html
+import React from 'react'; in App.js
+import ReactDOM from 'react-dom/client'; in App.js
+use type="module" for index.html
+Remove main : app.js from package.json
+Write browserslist in package.json
+"browsersList" : [ "last 2 versions"]
+
+Homework :
+
+Read Parcel Documentation
+Types of script in script tage in html
