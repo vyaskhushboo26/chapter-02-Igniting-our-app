@@ -160,9 +160,9 @@ If the type attribute contains anyother value, then the code is treated as data 
 ### References
 ● Creating your own create-react-app
 
-● Parcel Documentation
+● [Parcel Documentation](https://parceljs.org/getting-started/webapp/)
 
-● Parcel on Production
+● [Parcel on Production](https://parceljs.org/features/production/)
 
 ● [BrowsersList:](https://browserslist.dev/)
 
