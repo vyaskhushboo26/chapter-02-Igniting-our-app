@@ -137,7 +137,7 @@ If the type attribute contains anyother value, then the code is treated as data 
 
 
 
-# Project Assignment:
+### Project Assignment:
 - In your existing project
 ● - intialize `npm` into your repo
 ● - install `react` and `react-dom`
@@ -148,10 +148,13 @@ If the type attribute contains anyother value, then the code is treated as data 
 ● - add `.gitignore` file
 ● - add `browserlists`
 ● - build a production version of your code using `parcel build`
-# References
+### References
 ● Creating your own create-react-app
+
 ● Parcel Documentation
+
 ● Parcel on Production
+
 ● [BrowsersList:](https://browserslist.dev/)
 
 
